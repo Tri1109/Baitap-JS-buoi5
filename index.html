@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bài tập - JS - Buổi 5</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <h1 class="text-danger">Bài 1: Quản lí tuyển sinh</h1>
+        <h2>Nhập thông tin thí sinh</h2>
+        <form>
+          <div class="form-group">
+            <label for="diemChuan">Điểm chuẩn:</label>
+            <input type="number" id="diemChuan" name="diemChuan" />
+          </div>
+          <div class="form-group">
+            <label for="diemMon1">Điểm môn 1:</label>
+            <input type="number" id="diemMon1" name="diemMon1" />
+          </div>
+          <div class="form-group">
+            <label for="diemMon2">Điểm môn 2:</label>
+            <input type="number" id="diemMon2" name="diemMon2" />
+          </div>
+          <div class="form-group">
+            <label for="diemMon3">Điểm môn 3:</label>
+            <input type="number" id="diemMon3" name="diemMon3" />
+          </div>
+          <div class="form-group">
+            <label for="khuVuc">Khu vực ưu tiên:</label>
+            <select id="khuVuc" name="khuVuc">
+              <option value="2">Khu vực A</option>
+              <option value="1">Khu vực B</option>
+              <option value="0.5">Khu vực C</option>
+              <option value="0">Không thuộc khu vực ưu tiên</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="doiTuong">Đối tượng ưu tiên:</label>
+            <select id="doiTuong" name="doiTuong">
+              <option value="2.5">Đối tượng 1</option>
+              <option value="1.5">Đối tượng 2</option>
+              <option value="1">Đối tượng 3</option>
+              <option value="0">Không thuộc đối tượng ưu tiên</option>
+            </select>
+          </div>
+          <button type="button" onclick="handlePoint()" class="btn btn-success">
+            Xác nhận
+          </button>
+        </form>
+        <div id="result1" class="py-5"></div>
+      </div>
+      <div>
+        <h1 class="text-danger">Bài 2: Tính tiền điện</h1>
+        <h2>Nhập thông tin khách hàng</h2>
+        <form class="row">
+          <div class="form-group col-6">
+            <label for="name">Tên:</label>
+            <input type="text" id="name" name="name" />
+          </div>
+          <div class="form-group col-6">
+            <label for="elecNum">Số điện tiêu thụ:</label>
+            <input type="number" id="elecNum" name="elecNum" />
+          </div>
+          <button type="button" onclick="handleMoney()" class="btn btn-success">
+            Tính tiền điện
+          </button>
+        </form>
+        <div id="result2" class="py-5"></div>
+      </div>
+      <div>
+        <h1 class="text-danger">Bài 3: Tính thuế thu nhập cá nhân</h1>
+        <h2>Nhập thông tin</h2>
+        <form class="row">
+          <div class="form-group col-4">
+            <label for="name3">Tên:</label>
+            <input type="text" id="name3" name="name3" />
+          </div>
+          <div class="form-group col-4">
+            <label for="salary">Tổng thu nhập:</label>
+            <input type="number" id="salary" name="salary" />
+          </div>
+          <div class="form-group col-4">
+            <label for="person">Số người phụ thuộc:</label>
+            <input type="text" id="person" name="person" />
+          </div>
+          <button type="button" onclick="tinhThue()" class="btn btn-success">
+            Tính thuế thu nhập cá nhân
+          </button>
+        </form>
+        <div id="result3" class="py-5"></div>
+      </div>
+      <div>
+        <h1 class="text-danger">Bài 4: Tính tiền cáp</h1>
+        <h2>Thông tin khách hàng</h2>
+        <form id="customerForm" class="row" action="#" method="post">
+          <div class="form-group col-4">
+            <label for="type">Loại khách hàng:</label>
+            <select id="type" name="type" onchange="toggleInfoInput()">
+              <option value="nha_dan">Nhà dân</option>
+              <option value="doanh_nghiep">Doanh nghiệp</option>
+            </select>
+          </div>
+          <div class="form-group col-4">
+            <label for="code">Mã khách hàng:</label>
+            <input type="number" id="code" name="code" />
+          </div>
+          <div class="form-group col-4">
+            <label for="channel">Số kênh cao cấp:</label>
+            <input type="number" id="channel" name="channel" />
+          </div>
+          <div class="form-group" id="businessInfo" style="display: none">
+            <label for="business">Số kết nối:</label>
+            <input type="number" id="business" name="business" />
+          </div>
+        </form>
+        <button type="button" onclick="tinhTienCap()" class="btn btn-success">
+          Tính tiền cáp
+        </button>
+        <div id="result4" class="py-5"></div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./JS/main.js"></script>
+  </body>
+</html>
